@@ -28,4 +28,13 @@ export interface FilterState {
 
 export type CrowdLevel = 'Low' | 'Medium' | 'High';
 export type AgeGroup = 'all' | '0-1' | '2-3' | '4-6';
-export type Category = 'all' | 'park' | 'indoor' | 'event' | 'museum' | 'shopping';
+export type OutingCategory = 'all' | 'park' | 'indoor' | 'museum' | 'shopping';
+export type EventCategory =
+  | 'all'
+  | 'music'      // 音楽・ステージ
+  | 'sports'     // スポーツ・体験
+  | 'art'        // アート・ワークショップ
+  | 'gourmet'    // グルメ・フード
+  | 'festival'   // お祭り・季節イベント
+  | 'nature'     // 動物・自然体験
+  | 'local';     // 地域交流・マルシェ

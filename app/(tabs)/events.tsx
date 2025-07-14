@@ -70,7 +70,7 @@ export default function EventsScreen() {
         ListHeaderComponent={
           <View>
             {renderHeader()}
-            <FilterBar filters={filters} onFilterChange={setFilters} />
+            <FilterBar filters={filters} onFilterChange={setFilters} mode="event" />
           </View>
         }
         ListEmptyComponent={renderEmpty}

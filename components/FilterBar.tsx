@@ -1,14 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { ChevronDown } from 'lucide-react-native';
-import { FilterState, AgeGroup, Category } from '@/types';
+import { FilterState, AgeGroup, OutingCategory, EventCategory } from '@/types';
 
 interface FilterBarProps {
   filters: FilterState;
   onFilterChange: (filters: FilterState) => void;
+  mode?: 'outing' | 'event'; // 追加: おでかけ or イベント
 }
 
-export default function FilterBar({ filters, onFilterChange }: FilterBarProps) {
+export default function FilterBar({ filters, onFilterChange, mode = 'outing' }: FilterBarProps) {
   const ageGroups = [
     { value: 'all', label: 'すべて' },
     { value: '0-1', label: '0-1歳' },
@@ -16,14 +17,26 @@ export default function FilterBar({ filters, onFilterChange }: FilterBarProps) {
     { value: '4-6', label: '4-6歳' },
   ];
 
-  const categories = [
+  const outingCategories = [
     { value: 'all', label: 'すべて' },
     { value: 'park', label: '公園' },
     { value: 'indoor', label: '屋内' },
-    { value: 'event', label: 'イベント' },
     { value: 'museum', label: 'ミュージアム' },
     { value: 'shopping', label: 'ショッピング' },
   ];
+
+  const eventCategories = [
+    { value: 'all', label: 'すべて' },
+    { value: 'music', label: '音楽・ステージ' },
+    { value: 'sports', label: 'スポーツ・体験' },
+    { value: 'art', label: 'アート・ワークショップ' },
+    { value: 'gourmet', label: 'グルメ・フード' },
+    { value: 'festival', label: 'お祭り・季節イベント' },
+    { value: 'nature', label: '動物・自然体験' },
+    { value: 'local', label: '地域交流・マルシェ' },
+  ];
+
+  const categories = mode === 'event' ? eventCategories : outingCategories;
 
   const handleAgeGroupChange = (ageGroup: string) => {
     onFilterChange({ ...filters, ageGroup });

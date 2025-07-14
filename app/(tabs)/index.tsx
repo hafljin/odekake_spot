@@ -70,7 +70,7 @@ export default function HomeScreen() {
         ListHeaderComponent={
           <View>
             {renderHeader()}
-            <FilterBar filters={filters} onFilterChange={setFilters} />
+            <FilterBar filters={filters} onFilterChange={setFilters} mode="outing" />
           </View>
         }
         ListEmptyComponent={renderEmpty}
